@@ -57,16 +57,14 @@ namespace until.test
                     Singleton.DevelopCommandManager.addCommand("test2", new DevelopCommandInt("t3", "t3", 0));
                     Singleton.DevelopCommandManager.addCommand("test2", new DevelopCommandInt("t7", "t7", 0, -10));
                     Singleton.DevelopCommandManager.addCommand("test2", new DevelopCommandInt("t8", "t8", 0, -10, 10));
-                    transit(Phase.PermanentCollection_Start);
+                    transit(Phase.Camera_Start);
                     break;
-#if false
                 case Phase.Camera_Start:
                     transit(Phase.Camera_Wait);
                     Singleton.SceneLoader.requestToLoad(BuildinSceneIndex.CameraModule_CameraModule, () => transit(Phase.PermanentCollection_Start));
                     break;
                 case Phase.Camera_Wait:
                     break;
-#endif
                 case Phase.PermanentCollection_Start:
                     transit(Phase.PermanentCollection_Wait);
 //                    Singleton.SceneLoader.requestToLoad(BuildinSceneIndex.AppSystem_PermanentCollection, () => transit(Phase.System_Start));
