@@ -1,5 +1,6 @@
 using until.mode;
 using until.develop;
+using until.modules.camera;
 
 
 namespace until.test
@@ -67,20 +68,20 @@ namespace until.test
                     break;
                 case Phase.PermanentCollection_Start:
                     transit(Phase.PermanentCollection_Wait);
-//                    Singleton.SceneLoader.requestToLoad(BuildinSceneIndex.AppSystem_PermanentCollection, () => transit(Phase.System_Start));
+                    Singleton.SceneLoader.requestToLoad(BuildinSceneIndex.AppSystem_PermanentCollection, () => transit(Phase.System_Start));
                     break;
                 case Phase.PermanentCollection_Wait:
                     break;
                 case Phase.System_Start:
-                    Singleton.PrefabInstantiateMediator.requestFromCollection("AppSystem", (result, go) => transit(Phase.NextMode));
+                    Singleton.PrefabInstantiateMediator.requestFromCollection("AppSystem", (result, go) => transit(Phase.NextMode), eternal: true);
                     break;
                 case Phase.System_Wait:
                     break;
                 case Phase.NextMode:
-                    //Singleton.CameraManager.transitCamera<CameraActionFree>();
-                    //Singleton.ModeManager.enqueueNextMode<test3.ModeIngameSetup>();
-                    //Singleton.ModeManager.enqueueNextMode<test2.ModeIngameSetup>();
-                    //Singleton.ModeManager.enqueueNextMode<test.AppmodeIngameSetup>();
+                    Singleton.CameraManager.transitCamera<CameraActionFree>();
+                    // Singleton.ModeManager.enqueueNextMode<test3.ModeIngameSetup>();
+                    // Singleton.ModeManager.enqueueNextMode<test2.ModeIngameSetup>();
+                    // Singleton.ModeManager.enqueueNextMode<test.AppmodeIngameSetup>();
                     transit(Phase.Finish);
                     break;
                 default:

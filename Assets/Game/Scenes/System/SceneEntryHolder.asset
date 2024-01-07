@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35b1d196226d72f4d97e8a85f437ce02, type: 3}
   m_Name: SceneEntryHolder
   m_EditorClassIdentifier: 
-  _Category: CameraModule
+  _Category: AppSystem
   _Entries:
-  - Path: Assets/Until/Modules/Camera/Scenes/CameraModule.unity
+  - Path: Assets/Game/Scenes/System/PermanentCollection.unity
