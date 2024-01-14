@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace until.utils
 {
-    public abstract class Identifier<T> : IEquatable<T>
+    public abstract class Identifier<T> : IEquatable<T>, IComparable<T>
         where T : Identifier<T>
     {
         #region Definitions
         public abstract bool equal(T other);
+        public abstract int compare(T other);
         public abstract int Hashcode { get; }
         #endregion
 
@@ -51,6 +52,15 @@ namespace until.utils
         {
             if (lhs is null) return !(rhs is null);
             return !(lhs == rhs);
+        }
+
+        public int CompareTo(T other)
+        {
+            if (other is null)
+            {
+                return 0;
+            }
+            return compare(other);
         }
         #endregion
     }
